@@ -1,11 +1,12 @@
-
-import './App.css';
+import "antd/dist/antd.css";
+import Cardlist from "./Components/Cardlist/Cardlist";
 
 function App() {
+    
   return (
-    <div className="App">
-      <p>hi</p>
-    </div>
+    <>
+      <Cardlist />
+    </>
   );
 }
 
