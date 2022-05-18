@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Cards from '../Cards';
-import { Row, Col } from 'antd';
+import { Row, Col,Space } from 'antd';
 import Spinner from './Spinner';
 import PopUp from '../PopUp/PopUp';
 
@@ -20,7 +20,7 @@ function Cardlist() {
         }
     }, [])
 
-    return ( state.length!=0?
+    return ( state.length!==0?
         <>
         <PopUp />
         <div className='block featureBlock bgGold' style={{marginLeft:"2%",marginRight:"2%"}} >
@@ -28,14 +28,16 @@ function Cardlist() {
                 <Row gutter={grid.sm} justify="space-evenly">
 
                     {state.map((item) => {
-                        return (<Col span={6}  >
+                        return (<Space wrap >
+                            <Col span={6}  >
                             <Cards key={item.id} 
                             name={item.name} 
                             email={item.email} 
                             phone={item.phone}
                             website={item.website}
                             />
-                        </Col>)
+                        </Col>
+                        </Space>)
                     })}
 
                 </Row>
