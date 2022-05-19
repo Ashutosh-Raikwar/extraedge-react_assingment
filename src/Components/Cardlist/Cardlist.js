@@ -5,8 +5,8 @@ import Spinner from './Spinner';
 import PopUp from '../PopUp/PopUp';
 
 function Cardlist() {
-    const grid ={xs: 8, sm: 16, md: 24, lg: 32 }
-    const [state, setState] = useState([])
+    
+    const [state, setState] = useState([''])
 
     const datafetch = () => {
         fetch(" https://jsonplaceholder.typicode.com/users")
@@ -23,23 +23,24 @@ function Cardlist() {
     return ( state.length!==0?
         <>
         <PopUp />
-        <div className='block featureBlock bgGold' style={{marginLeft:"2%",marginRight:"2%"}} >
+        <div className='block featureBlock ' style={{marginLeft:"2%",marginRight:"2%"}} >
             <div className='container-fluid'>
-                <Row gutter={grid.sm} justify="space-evenly">
-
-                    {state.map((item) => {
-                        return (<Space wrap >
-                            <Col span={6}  >
-                            <Cards key={item.id} 
+                <Row gutter={[16, 16]} justify="space-evenly">
+                <Space wrap >
+                
+                    {state.map( (item,i) => {
+                        return(
+                            <Cards key={i}
                             name={item.name} 
                             email={item.email} 
                             phone={item.phone}
                             website={item.website}
                             />
-                        </Col>
-                        </Space>)
-                    })}
+                            )
 
+                    })}
+                    
+                    </Space>
                 </Row>
             </div>
         </div>

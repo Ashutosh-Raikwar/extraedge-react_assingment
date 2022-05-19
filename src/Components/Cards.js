@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Space, Typography } from "antd";
+import { Card, Space, Typography,Row, Col  } from "antd";
 import {
   HeartOutlined,
   EditOutlined,
@@ -8,23 +8,24 @@ import {
   PhoneOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import { Row, Col } from "antd";
 
 const { Text } = Typography;
 
-function Cards({ name, email, phone, website }) {
-  const image = `https://avatars.dicebear.com/api/avataaars/:${name}.svg?options[mood][]=happy`;
+function Cards({ name, email, phone, website}) {
+  const image = `https://avatars.dicebear.com/api/avataaars/:${name}.svg`;
 
   return (
-    <>
+    < ><Col span={6}>
       <Card
+        
         size="small"
         cover={
           <img
-            alt="user image"
+            alt="Not found"
             src={image}
             style={{ backgroundColor: "#f0f0f0" }}
           />
+          
         }
         style={{ width: 300 }}
       >
@@ -89,6 +90,7 @@ function Cards({ name, email, phone, website }) {
           </Row>
         </div>
       </Card>
+      </Col>
     </>
   );
 }

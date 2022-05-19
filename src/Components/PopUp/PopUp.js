@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input } from "antd";
+import { Modal, Form, Input } from "antd";
 
 
 
@@ -17,10 +17,6 @@ const PopUp = () => {
         console.log(values);
     };
 
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
-
     const handleOk = () => {
         setIsModalVisible(false);
     };
@@ -31,9 +27,6 @@ const PopUp = () => {
 
     return (
         <>
-            {/* <Button type="primary" onClick={showModal}>
-                Open Modal
-            </Button> */}
 
             <Modal
                 title="Basic Modal"
