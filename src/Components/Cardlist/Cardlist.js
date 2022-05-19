@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react';
 import Cards from '../Cards';
-import { Row, Col,Space } from 'antd';
+import { Row,Space } from 'antd';
 import Spinner from './Spinner';
 import PopUp from '../PopUp/PopUp';
 
+
 function Cardlist() {
     
-    const [state, setState] = useState([''])
+    const [state, setState] = useState([])
 
-    const datafetch = () => {
-        fetch(" https://jsonplaceholder.typicode.com/users")
-            .then(res => res.json())
-            .then(data => setState(data))
+    const datafetch = async() => {
+        const fetching = await fetch(" https://jsonplaceholder.typicode.com/users")
+        const response =await fetching.json()
+        const data = await(setState(response))
     }
 
     useEffect(() => {
-        return () => {
-            datafetch()
-        }
-    }, [])
+        datafetch()
+    }, [state])
 
     return ( state.length!==0?
         <>
@@ -37,7 +36,6 @@ function Cardlist() {
                             website={item.website}
                             />
                             )
-
                     })}
                     
                     </Space>
