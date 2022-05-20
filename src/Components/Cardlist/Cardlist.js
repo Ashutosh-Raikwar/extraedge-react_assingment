@@ -8,16 +8,17 @@ import PopUp from '../PopUp/PopUp';
 function Cardlist() {
     
     const [state, setState] = useState([])
-
+    
     const datafetch = async() => {
         const fetching = await fetch(" https://jsonplaceholder.typicode.com/users")
-        const response =await fetching.json()
-        const data = await(setState(response))
+        const response =await fetching.json();
+        setState(response)
     }
 
     useEffect(() => {
         datafetch()
-    }, [state])
+        
+    }, [])
 
     return ( state.length!==0?
         <>
