@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import PopUp from "./PopUp/PopUp.js"
 import { Card, Space, Typography,Row, Col  } from "antd";
 import {
   HeartOutlined,
@@ -7,12 +8,22 @@ import {
   MailOutlined,
   PhoneOutlined,
   GlobalOutlined,
+  HeartFilled,
+  
 } from "@ant-design/icons";
 
 const { Text } = Typography;
 
-function Cards({ name, email, phone, website}) {
+function Cards({ name, email, phone, website, id, onDelete,like}) {
+  
   const image = `https://avatars.dicebear.com/api/avataaars/:${name}.svg`;
+
+  const [heartFilled,setHeartFilled] = useState(false);
+  const [onEdit,setOnedit] = useState(false);
+  
+  const changeHeart = () =>{
+    setHeartFilled(!heartFilled)
+}
 
   return (
     < ><Col span={6}>
@@ -71,20 +82,25 @@ function Cards({ name, email, phone, website}) {
           <Row justify="space-evenly">
 
             <Col span={4}>
-              <Space>
-                <HeartOutlined style={{ color: "red" }} />{" "}
+              <Space >
+                {heartFilled?<HeartFilled style={{ color: "red" }}  onClick={changeHeart}/>
+                :
+                <HeartOutlined style={{ color: "red" }}  onClick={changeHeart} />
+                }
+                  
               </Space>
             </Col>
 
             <Col span={4}>
               <Space>
-                <EditOutlined style={{ color: "#7F8487" }} />{" "}
+                <EditOutlined style={{ color: "#7F8487" }} onClick={() => setOnedit(true)} />
+                {onEdit?<PopUp/>:""}
               </Space>
             </Col>
 
             <Col span={4}>
               <Space>
-                <DeleteFilled style={{ color: "#7F8487" }} />{" "}
+                <DeleteFilled style={{ color: "#7F8487" }} onClick={() => onDelete(id) }  />
               </Space>
             </Col>
           </Row>
